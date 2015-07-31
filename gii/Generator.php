@@ -5,7 +5,7 @@
  * Date: 08.12.14
  * Time: 8:03
  */
-namespace insolita\migrik\gii;
+namespace tahiaji\migrik\gii;
 
 use yii\db\Connection;
 use Yii;
