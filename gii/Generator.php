@@ -19,12 +19,12 @@ class Generator extends \yii\gii\Generator{
 
 
     public $db = 'db';
-    public $migrationPath = '@app/migrations';
+    public $migrationPath = '@console/migrations';
     public $tableName;
     public $tableIgnore;
     public $genmode='single';
     public $usePrefix=true;
-    public $tableOptions='ENGINE=InnoDB';
+    public $tableOptions='CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
     private $_ignoredTables = [];
     private $_tables = [];
