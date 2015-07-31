@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require-dev --prefer-dist insolita/yii2-migration-generator "*"
+php composer.phar require-dev --prefer-dist tahiaji/yii2-migration-generator "*"
 ```
 
 or add
 
 ```
-"insolita/yii2-migration-generator": "*"
+"tahiaji/yii2-migration-generator": "dev-master"
 ```
 
 to the require-dev section of your `composer.json` file.
