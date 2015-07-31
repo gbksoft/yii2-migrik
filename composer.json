@@ -1,6 +1,6 @@
 {
-    "name": "insolita/yii2-migration-generator",
-    "description": "gii tool for mass migration generation by Schema ",
+    "name": "tahiaji/yii2-migration-generator",
+    "description": "gii tool for mass migration generation by Schema",
     "type": "yii2-extension",
     "keywords": ["yii2","extension"],
     "license": "MIT",
@@ -8,11 +8,15 @@
         {
             "name": "insolita",
             "email": "donnainsolita@gmail.com"
+        },
+          {
+            "name": "tahiaji",
+            "email": "tahiaji@gmail.com"
         }
     ],
 	"autoload": {
 		"psr-4": {
-			"insolita\\migrik\\": ""
+			"tahiaji\\migrik\\": ""
 		}
 	},
     "require": {
@@ -22,6 +26,6 @@
 		"yiisoft/yii2-gii": "*"
 	},
 	"extra": {
-		"bootstrap": "insolita\\migrik\\Bootstrap"
+		"bootstrap": "tahiaji\\migrik\\Bootstrap"
 	}
 }
