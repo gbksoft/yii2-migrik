@@ -24,7 +24,7 @@ class Generator extends \yii\gii\Generator{
     public $tableIgnore;
     public $genmode='single';
     public $usePrefix=true;
-    public $tableOptions='CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+    public $tableOptions='CHARACTER SET utf8 ENGINE=InnoDB';
 
     private $_ignoredTables = [];
     private $_tables = [];
