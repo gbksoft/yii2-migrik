@@ -9,7 +9,6 @@
  *  @var tahiaji\migrik\gii\Generator $generator
  *
  */
-
 echo "<?php\n";
 ?>
 
@@ -20,43 +19,49 @@ class <?= $migrationName ?> extends Migration
 {
     public function safeUp()
     {
-        $tableOptions = '<?=$generator->tableOptions?>';
-        <?php foreach($tableList as $tableData):?>
-         $this->createTable('<?= ($generator->usePrefix)?$tableData['alias']:$tableData['name'] ?>',
-                [
-                <?php foreach($tableData['columns'] as $name=>$data):?>
-                '<?=$name?>'=> <?=$data;?>,
-                <?php endforeach;?>
-                ], $tableOptions);
-        
-        <?php if(!empty($tableData['indexes']) && is_array($tableData['indexes'])):?>
-            <?php foreach($tableData['indexes'] as $name=>$data):?>
-                <?php if($name!='PRIMARY'):?>
-          $this->createIndex('<?=$name?>', '<?=$tableData['alias']?>','<?=implode(",",array_values($data['cols']))?>',<?=$data['isuniq']?>);
-                <?php endif;?>
-            <?php endforeach;?>
-         <?php endif?>
-        <?php endforeach;?>
-        <?php if(!empty($tableRelations) && is_array($tableRelations)):?>
-            <?php foreach($tableRelations as $table):?>
-                <?php foreach($table['fKeys'] as $i=>$rel):?>
-          $this->addForeignKey('fk_<?=$table['tableName']?>_<?=$rel['pk']?>', '<?=$table['tableAlias']?>', '<?=$rel['pk']?>', '<?=$rel['ftable']?>', '<?=$rel['fk']?>');
-                <?php endforeach;?>
-            <?php endforeach;?>
-        <?php endif?>
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+             $tableOptions = '<?=$generator->tableOptions?>';
+        }
+<?php foreach($tableList as $tableData):?>
+        $this->createTable('<?= ($generator->usePrefix)?$tableData['alias']:$tableData['name'] ?>', [
+<?php foreach($tableData['columns'] as $name=>$data):?>
+            '<?=$name?>'=> <?=$data;?>,
+<?php endforeach;?>
+            ], $tableOptions);
+
+<?php if (!empty($tableData['indexes']) && is_array($tableData['indexes'])):?>
+<?php foreach($tableData['indexes'] as $name=>$data):?>
+<?php if ($name!='PRIMARY'):?>
+<?php if ($data['isfulltext']):?>
+        $this->execute('ALTER TABLE <?=$tableData['alias']?> ADD FULLTEXT `<?=$name?>` (<?=implode(",",array_values($data['cols']))?>)');
+<?php else:?>
+        $this->createIndex('<?=$name?>', '<?=$tableData['alias']?>', '<?=implode(", ",array_values($data['cols']))?>', <?=$data['isuniq']?>);
+<?php endif;?>
+<?php endif;?>
+<?php endforeach;?>
+<?php endif?>
+<?php endforeach;?>
+<?php if (!empty($tableRelations) && is_array($tableRelations)):?>
+<?php foreach($tableRelations as $table):?>
+<?php foreach($table['fKeys'] as $i=>$rel):?>
+        $this->addForeignKey('fk_<?=$table['tableName']?>_<?=$rel['pk']?>', '<?=$table['tableAlias']?>', '<?=$rel['pk']?>', '<?=$rel['ftable']?>', '<?=$rel['fk']?>');
+<?php endforeach;?>
+<?php endforeach;?>
+<?php endif?>
     }
 
     public function safeDown()
     {
-        <?php if(!empty($tableRelations) && is_array($tableRelations)):?>
-            <?php foreach($tableRelations as $table):?>
-                <?php foreach($table['fKeys'] as $i=>$rel):?>
-                    $this->dropForeignKey('fk_<?=$table['tableName']?>_<?=$rel['pk']?>', '<?=$table['tableAlias']?>');
-                <?php endforeach;?>
-            <?php endforeach;?>
-        <?php endif?>
-        <?php foreach($tableList as $tableData):?>
-            $this->dropTable('<?= ($generator->usePrefix)?$tableData['alias']:$tableData['name']?>');
-        <?php endforeach;?>
+<?php if (!empty($tableRelations) && is_array($tableRelations)):?>
+<?php foreach ($tableRelations as $table):?>
+<?php foreach ($table['fKeys'] as $i=>$rel):?>
+        $this->dropForeignKey('fk_<?=$table['tableName']?>_<?=$rel['pk']?>', '<?=$table['tableAlias']?>');
+<?php endforeach;?>
+<?php endforeach;?>
+<?php endif?>
+<?php foreach ($tableList as $tableData):?>
+        $this->dropTable('<?= ($generator->usePrefix)?$tableData['alias']:$tableData['name']?>');
+<?php endforeach;?>
     }
 }
