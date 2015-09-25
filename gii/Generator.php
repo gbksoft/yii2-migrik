@@ -232,15 +232,12 @@ class Generator extends \yii\gii\Generator
         $indexes = [];
         $query = Yii::$app->db->createCommand('SHOW INDEX FROM ' . $tableName)->queryAll();
         if ($query) {
-            foreach ($query as $i => $index) {              
-                FB($index);
+            foreach ($query as $i => $index) {
                 $indexes[$index['Key_name']]['cols'][$index['Seq_in_index']] = $index['Column_name'];
                 $indexes[$index['Key_name']]['isuniq'] = ($index['Non_unique'] == 1) ? 0 : 1;
                 $indexes[$index['Key_name']]['isfulltext'] = ($index['Index_type'] == "FULLTEXT") ? 1 : 0;
             }
-        }
-        FB($indexes);
-
+        }  
         return $indexes;
     }
 
