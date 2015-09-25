@@ -16,7 +16,7 @@ php composer.phar require-dev --prefer-dist tahiaji/yii2-migration-generator "*"
 or add
 
 ```
-"tahiaji/yii2-migration-generator": "dev-master"
+"tahiaji/yii2-migration-generator": "0.0.*"
 ```
 
 to the require-dev section of your `composer.json` file.
