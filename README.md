@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require-dev --prefer-dist tahiaji/yii2-migration-generator "*"
+php composer.phar require-dev --prefer-dist gbksoft/yii2-migration-generator "*"
 ```
 
 or add
 
 ```
-"tahiaji/yii2-migration-generator": "0.0.*"
+"gbksoft/yii2-migration-generator": "0.0.*"
 ```
 
 to the require-dev section of your `composer.json` file.

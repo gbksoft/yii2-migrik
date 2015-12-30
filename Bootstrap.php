@@ -1,6 +1,6 @@
 <?php
 
-namespace tahiaji\migrik;
+namespace gbksoft\migrik;
 
 use yii\base\Application;
 use yii\base\BootstrapInterface;
@@ -16,7 +16,7 @@ class Bootstrap implements BootstrapInterface
     {
         if ($app->hasModule('gii')) {
             if (!isset($app->getModule('gii')->generators['migrik'])) {
-                $app->getModule('gii')->generators['migrik'] = 'tahiaji\migrik\gii\Generator';
+                $app->getModule('gii')->generators['migrik'] = 'gbksoft\migrik\gii\Generator';
             }
         }
     }

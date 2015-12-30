@@ -1,31 +1,35 @@
 {
-    "name": "tahiaji/yii2-migration-generator",
+    "name": "gbksoft/yii2-migration-generator",
     "description": "gii tool for mass migration generation by Schema",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension","gii"],
+    "keywords": ["yii2", "extension", "gii"],
     "license": "MIT",
     "authors": [
         {
             "name": "insolita",
             "email": "donnainsolita@gmail.com"
         },
-          {
+        {
             "name": "tahiaji",
             "email": "tahiaji@gmail.com"
+        },
+        {
+            "name": "gbksoft",
+            "email": "dev@gbksoft.net"
         }
     ],
-	"autoload": {
-		"psr-4": {
-			"tahiaji\\migrik\\": ""
-		}
-	},
+    "autoload": {
+        "psr-4": {
+            "gbksoft\\migrik\\": ""
+        }
+    },
     "require": {
         "yiisoft/yii2": "*"
     },
-	"require-dev": {
-		"yiisoft/yii2-gii": "*"
-	},
-	"extra": {
-		"bootstrap": "tahiaji\\migrik\\Bootstrap"
-	}
+    "require-dev": {
+        "yiisoft/yii2-gii": "*"
+    },
+    "extra": {
+        "bootstrap": "gbksoft\\migrik\\Bootstrap"
+    }
 }

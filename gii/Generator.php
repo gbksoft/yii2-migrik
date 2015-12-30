@@ -1,4 +1,4 @@
-<?php namespace tahiaji\migrik\gii;
+<?php namespace gbksoft\migrik\gii;
 
 use yii\db\Connection;
 use Yii;

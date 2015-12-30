@@ -6,7 +6,7 @@
 /** @var $migrationName string the new migration class name
  *  @var array $tableList
  *  @var array $tableRelations
- *  @var tahiaji\migrik\gii\Generator $generator
+ *  @var gbksoft\migrik\gii\Generator $generator
  *
  */
 echo "<?php\n";
